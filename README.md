@@ -1,4 +1,4 @@
-# Piano Tuning Helper (MATLAB)
+# Piano Tuner (MATLAB)
 
 This project implements a simple helper tool for piano tuning.  
 Its purpose is to detect small frequency differences between strings of the same note, which create the characteristic “beating” effect. The analysis is performed both in the frequency domain—by inspecting the spectral content—and in the time domain, by examining the envelope of the signal.
