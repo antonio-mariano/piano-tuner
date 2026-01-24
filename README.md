@@ -22,8 +22,8 @@ The code is modular, easy to read, and suitable for experimentation or further d
 ├── reliable_mean.m            % Robust mean estimator
 ├── spectrum.m                 % Helper for spectrum visualization
 │
-├── dataset/                   % Audio files (.wav or .ogg)
-└── img/                       % Example output images (e.g., A4_example.png)
+├── dataset/                   % Audio files
+└── img/                       % Output example plots
 ```
 
 ---
