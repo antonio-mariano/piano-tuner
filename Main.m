@@ -34,7 +34,7 @@ for i=1:num_h
     subplot(num_h,2,2*i)
     diff = plot_difference_freq(x,Fs,f);
     
-    annotation('textbox',[0 0.82-(i-1)*0.3 0.15 0.01], 'String',sprintf('Harmónico %d', i),...
+    annotation('textbox',[0 0.82-(i-1)*0.3 0.15 0.01], 'String',sprintf('Harmonic %d', i),...
         'EdgeColor','none','HorizontalAlignment','center', 'FontSize',12);
 end
 

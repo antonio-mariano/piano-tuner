@@ -39,9 +39,9 @@ function diff = plot_difference_freq(x,Fs,f)
     loc_max = round(f_max/df+1);
     scatter([f_min f_max], [X(loc_min) X(loc_max)]);
     plot([f_min f_max],[X(loc_min) X(loc_max)],'--');
-    xlabel('Frequência [Hz]'); legend('abs(FFT)','max2(FFT)')
+    xlabel('Frequency [Hz]'); legend('abs(FFT)','max2(FFT)')
     
-    str = sprintf('\n        Diferença de picos\n        = %.2f Hz\n        = %.1f cents',...
+    str = sprintf('\n        Peak difference\n        = %.2f Hz\n        = %.1f cents',...
     diff, (1200/log(2))*(diff/f));
     xlim([f_peaks(1)-k f_peaks(1)+k]); text(f_peaks(1)-k, 0.9*max(X), str);
 end

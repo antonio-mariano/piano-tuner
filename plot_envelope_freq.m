@@ -35,7 +35,7 @@ function env_freq = plot_envelope_freq(x,Fs,f)
 
     plot(t, xf); grid; hold on;
     plot(t, env);
-    xlabel('Tempo [s]');
+    xlabel('Time [s]');
 
     % Análise do envelope
     [~,locs] = findpeaks(env); % máximos do envelope
@@ -51,8 +51,8 @@ function env_freq = plot_envelope_freq(x,Fs,f)
     
     % Finaliza o gráfico
     scatter(locs/Fs, env(locs));
-    legend('Sinal','Envolvente','Picos(env)')
-	str = sprintf('\n\n\n        Frequência da envolvente\n        = %.2f Hz\n        = %.1f cents',...
+    legend('Signal','Envelope','Peaks(env)')
+	str = sprintf('\n\n\n        Envelope Frequency\n        = %.2f Hz\n        = %.1f cents',...
     env_freq, (1200/log(2))*(env_freq/f));
     xl = xlim(); text(xl(1), max(xf), str);
 end
