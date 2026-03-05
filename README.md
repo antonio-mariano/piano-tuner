@@ -1,10 +1,10 @@
 # 🎹 Piano Tuner – Real‑Time Detuning and Beating Analysis
 
-A complete MATLAB tool for analyzing and tuning piano notes by detecting small frequency differences between strings of the same note. These differences create the characteristic *beating* effect heard when a note is slightly out of tune.
+A MATLAB tool for analyzing and tuning piano notes by detecting small frequency differences between strings of the same note. These differences create the characteristic *beating* effect heard when a note is slightly out of tune.
 
 The system combines frequency‑domain and time‑domain analysis to estimate detuning in **Hz** and **cents**, and presents the results through clear, intuitive visualizations, that help you in the tuning process.
 
-The code is modular and easy to extend. Feel free to add your contributions if you want!
+The code is modular and easy to extend. Contributions are welcome!
 
 <p align="center">
   <img src="https://img.shields.io/badge/MATLAB-F58025?style=for-the-badge&logo=mathworks&logoColor=white">
@@ -15,17 +15,18 @@ The code is modular and easy to extend. Feel free to add your contributions if y
 
 ## 📌 Project Overview
 
-Most piano notes are produced by three strings tuned to the same frequency.  
-When one string drifts slightly sharp or flat, the resulting interference causes a slow amplitude modulation — the *beating effect*.
+Most piano notes are produced by **three strings** tuned to the same frequency.  
+When one string drifts slightly sharp or flat, the interference between them creates a slow amplitude modulation — the *beating effect*.
+
 This tool analyzes a recorded piano note to:
 
-- Identify the strongest three harmonic components
-- Measure the beating frequency through envelope analysis  
+- Identify the three strongest harmonic components  
+- Measure the beating frequency using envelope analysis  
 - Detect peak differences in the spectrum  
 - Estimate detuning in **Hz** and **cents**  
-- Visualize all results in an interpretable way  
+- Provide clear visualizations to support tuning decisions  
 
-The workflow is summarized in the following figure:
+The workflow is illustrated below:
 
 ![Workflow](/images/workflow.png)
 
@@ -33,32 +34,33 @@ The workflow is summarized in the following figure:
 
 ## ✨ Features
 
-- Automatic detection of the three strongest harmonic components
-- Envelope‑based beating frequency estimation  
+- Automatic detection of the three dominant harmonic components  
+- Envelope‑based estimation of beating frequency  
 - Narrowband spectral analysis around each harmonic  
-- Detuning measurement in **Hz** and **cents**   
-- Clear visual plots for interpretation and tuning help
+- Detuning measurement in **Hz** and **cents**  
+- Clear plots designed to help with practical tuning  
 
 ---
 
 ## ▶️ Example Run
 
-And an example analysis of the recorded note in `dataset/A4.ogg` in the following figure. In the top right plot we can see only one of the three strings is at the desired 440Hz frequency, the other two are lower. The left plots shows an image of what we should ear if that note is played, an oscilation in amplitude — the *beating effect*.
+The figure below shows the analysis of the note `dataset/A4.ogg`.  
+In the top‑right plot, only one of the three strings is correctly tuned to 440 Hz, while the other two are slightly lower.  
+The left‑side plots show the amplitude oscillation that would be heard when playing the note — the *beating effect*.
 
 ![Example result of analysis](images/A4_example.png)
 
-
 ---
-
 
 ## 🚀 How to Use
 
 1. **Record a piano note** (preferably one that is slightly out of tune) and place the audio file in the `dataset/` folder.  
-   - Use `.wav` for older MATLAB versions.
+   - Use `.wav` if you are working with an older MATLAB version.
 
 2. **Edit the file name** in `Main.m`:
    ```matlab
    audioread('dataset/your_file.ogg');
+
 
 ---
 
