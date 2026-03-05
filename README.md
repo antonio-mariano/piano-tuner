@@ -1,78 +1,98 @@
-# Piano Tuner (MATLAB)
+# 🎹 Piano Tuner – Real‑Time Beating and Detuning Analysis
 
-This project implements an helper tool for piano tuning.  
-Its purpose is to detect small frequency differences between strings of the same note, which create the characteristic “beating” effect. The analysis is performed both in the frequency domain—by inspecting the spectral content—and in the time domain, by examining the envelope of the signal.
+A complete MATLAB tool for analyzing and tuning piano notes by detecting small frequency differences between strings of the same note. These differences create the characteristic *beating* effect heard when a note is slightly out of tune.
 
-The tool estimates detuning in both Hz and cents (1 cent = 1% of the distance to the next semitone) and presents the results in clear visual form.
+The system combines frequency‑domain and time‑domain analysis to estimate detuning in **Hz** and **cents**, and presents the results through clear, intuitive visualizations.  
+The code is modular and easy to extend. Feel free to add your contributions if you want!
 
-The code is modular, easy to read, and suitable for experimentation or further development.
-
----
-
-## Project Structure
-
-```
-│
-├── Main.m                     % Main script
-├── filtro_mm.m                % Moving‑mean low‑pass filter
-├── filtro_narrowband.m        % Narrowband IIR band‑pass filter
-├── harmonics.m                % Estimates harmonic frequencies
-├── plot_envelope_freq.m       % Computes and plots envelope frequency
-├── plot_difference_freq.m     % Computes and plots peak‑difference
-├── reliable_mean.m            % Robust mean estimator
-├── spectrum.m                 % Helper for spectrum visualization
-│
-├── dataset/                   % Audio files
-└── img/                       % Output example plots
-```
+<p align="center">
+  <img src="https://img.shields.io/badge/MATLAB-F58025?style=for-the-badge&logo=mathworks&logoColor=white">
+  <img src="https://img.shields.io/badge/Signal%20Processing%20Toolbox-0076A8?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Audio%20Analysis-FFB000?style=for-the-badge">
+</p>
 
 ---
 
-## How to Use
+## 📌 Project Overview
 
-1. Record an out‑of‑tune piano note and place the audio file inside the `dataset/` folder  
-   (use `.wav` if your MATLAB version is older than 2018).
-2. Edit the file name in `Main.m`, for example:  
+Most piano notes are produced by two or three strings tuned to nearly the same frequency.  
+When one string drifts slightly sharp or flat, the resulting interference causes a slow amplitude modulation — the *beating effect*.
+
+This tool analyzes a recorded piano note to:
+
+- Identify the strongest three harmonic components
+- Measure the beating frequency through envelope analysis  
+- Detect peak differences in the spectrum  
+- Estimate detuning in **Hz** and **cents**  
+- Visualize all results in an interpretable way  
+
+The workflow is:
+
+1. Load an audio file  
+2. Extract harmonic frequencies  
+3. Analyze the amplitude envelope  
+4. Detect spectral peak differences  
+5. Display results and plots  
+
+<p align="center">
+  <img src="img/example_plot.png" width="500"><br>
+  <em>Example of envelope and spectral analysis</em>
+</p>
+
+---
+
+## ✨ Features
+
+- Automatic detection of the three strongest harmonic components
+- Envelope‑based beating frequency estimation  
+- Narrowband spectral analysis around each harmonic  
+- Detuning measurement in **Hz** and **cents**   
+- Clear visual plots for interpretation  
+
+---
+
+
+## 🚀 How to Use
+
+1. **Record a piano note** (preferably one that is slightly out of tune) and place the audio file in the `dataset/` folder.  
+   - Use `.wav` for older MATLAB versions.
+
+2. **Edit the file name** in `Main.m`:
    ```matlab
    audioread('dataset/your_file.ogg');
-   ```
-3. Run the script:
-   ```matlab
-   Main
-   ```
 
 ---
 
-## What the Program Does
+## 🔍 What the Program Analyzes
+### 🎵 Harmonic Estimation
+The signal is transformed into the frequency domain, and the three strongest harmonic peaks are identified. These serve as reference points for the rest of the analysis.
 
-### Harmonic estimation
-The signal is analyzed in the frequency domain to identify the strongest three harmonic components of the note.
+### 🌊 Envelope Analysis
+Slightly detuned strings produce a slow amplitude modulation.
+The tool extracts the envelope and estimates the beating frequency, which corresponds to the detuning between strings.
 
-### Envelope analysis
-The tuner measures the slow amplitude modulation caused by slightly detuned strings, which produces the audible beating.
+### 📈 Peak‑Difference Analysis
+For each harmonic, two nearby spectral peaks are detected.
+Their separation gives the detuning:
 
-### Peak‑difference analysis
-The script finds the two most separated peaks around each harmonic and reports the difference in Hz and cents.
+In Hz — absolute frequency difference
 
-The plots make it easy to see whether a note is stable or producing noticeable beating.  
-When beating is present, the tool indicates which string is flat or sharp, helping determine the direction to move the tuning hammer.
+In cents — musical interval relative to the next semitone
 
----
-
-## Requirements
-
-This project was developed and tested using:
-
-- MATLAB R2019a  
-- Signal Processing Toolbox 8.2  
-
-### Minimum recommended version
-
-- MATLAB R2018a  
-- Signal Processing Toolbox R2018a  
-
-All functions used (`findpeaks`, `designfilt`, `lowpass`, `envelope`, `movmean`) are available from R2018a onward.
+This helps determine whether the note is stable or producing audible beating, and whether a string is sharp or flat.
 
 ---
 
+## 💻 Requirements
+Development environment
+MATLAB R2019a
+
+Signal Processing Toolbox 8.2
+
+Minimum recommended version
+MATLAB R2018a
+
+Signal Processing Toolbox R2018a
+
+All required functions (findpeaks, designfilt, lowpass, envelope, movmean) are available from R2018a onward.
 
