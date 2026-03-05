@@ -1,23 +1,22 @@
-# 🎹 Piano Tuner – Real‑Time Beating and Detuning Analysis
+# 🎹 Piano Tuner – Real‑Time Detuning and Beating Analysis
 
 A complete MATLAB tool for analyzing and tuning piano notes by detecting small frequency differences between strings of the same note. These differences create the characteristic *beating* effect heard when a note is slightly out of tune.
 
-The system combines frequency‑domain and time‑domain analysis to estimate detuning in **Hz** and **cents**, and presents the results through clear, intuitive visualizations.  
+The system combines frequency‑domain and time‑domain analysis to estimate detuning in **Hz** and **cents**, and presents the results through clear, intuitive visualizations, that help you in the tuning process.
+
 The code is modular and easy to extend. Feel free to add your contributions if you want!
 
 <p align="center">
   <img src="https://img.shields.io/badge/MATLAB-F58025?style=for-the-badge&logo=mathworks&logoColor=white">
   <img src="https://img.shields.io/badge/Signal%20Processing%20Toolbox-0076A8?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Audio%20Analysis-FFB000?style=for-the-badge">
 </p>
 
 ---
 
 ## 📌 Project Overview
 
-Most piano notes are produced by two or three strings tuned to nearly the same frequency.  
+Most piano notes are produced by three strings tuned to the same frequency.  
 When one string drifts slightly sharp or flat, the resulting interference causes a slow amplitude modulation — the *beating effect*.
-
 This tool analyzes a recorded piano note to:
 
 - Identify the strongest three harmonic components
@@ -26,18 +25,13 @@ This tool analyzes a recorded piano note to:
 - Estimate detuning in **Hz** and **cents**  
 - Visualize all results in an interpretable way  
 
-The workflow is:
+The workflow is summarized in the following figure:
 
-1. Load an audio file  
-2. Extract harmonic frequencies  
-3. Analyze the amplitude envelope  
-4. Detect spectral peak differences  
-5. Display results and plots  
+![Workflow](/images/workflow.png)
 
-<p align="center">
-  <img src="img/example_plot.png" width="500"><br>
-  <em>Example of envelope and spectral analysis</em>
-</p>
+And an example analysis of the recorded note in `dataset/A4.ogg`:
+
+![Example result of analysis](images/A4_example.png)
 
 ---
 
@@ -63,15 +57,15 @@ The workflow is:
 
 ---
 
-## 🔍 What the Program Analyzes
-### 🎵 Harmonic Estimation
+## 📈 What the Program Analyzes
+### Harmonic Estimation
 The signal is transformed into the frequency domain, and the three strongest harmonic peaks are identified. These serve as reference points for the rest of the analysis.
 
-### 🌊 Envelope Analysis
+### Envelope Analysis
 Slightly detuned strings produce a slow amplitude modulation.
 The tool extracts the envelope and estimates the beating frequency, which corresponds to the detuning between strings.
 
-### 📈 Peak‑Difference Analysis
+### Peak‑Difference Analysis
 For each harmonic, two nearby spectral peaks are detected.
 Their separation gives the detuning:
 
