@@ -29,10 +29,6 @@ The workflow is summarized in the following figure:
 
 ![Workflow](/images/workflow.png)
 
-And an example analysis of the recorded note in `dataset/A4.ogg`:
-
-![Example result of analysis](images/A4_example.png)
-
 ---
 
 ## ✨ Features
@@ -41,7 +37,16 @@ And an example analysis of the recorded note in `dataset/A4.ogg`:
 - Envelope‑based beating frequency estimation  
 - Narrowband spectral analysis around each harmonic  
 - Detuning measurement in **Hz** and **cents**   
-- Clear visual plots for interpretation  
+- Clear visual plots for interpretation and tuning help
+
+---
+
+## ▶️ Example Run
+
+And an example analysis of the recorded note in `dataset/A4.ogg` in the following figure. In the top right plot we can see only one of the three strings is at the desired 440Hz frequency, the other two are lower. The left plots shows an image of what we should ear if that note is played, an oscilation in amplitude — the *beating effect*.
+
+![Example result of analysis](images/A4_example.png)
+
 
 ---
 
